@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCommon", "Samples\Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSample", "Samples\WebSample\WebSample.csproj", "{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1326140C-4D83-49AE-A1CC-ADF44CCC392D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riven.Modular.Tests", "tests\Riven.Modular.Tests\Riven.Modular.Tests.csproj", "{5922CB2B-85EB-420C-80FC-E79360F24055}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,10 @@ Global
 		{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5922CB2B-85EB-420C-80FC-E79360F24055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5922CB2B-85EB-420C-80FC-E79360F24055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5922CB2B-85EB-420C-80FC-E79360F24055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5922CB2B-85EB-420C-80FC-E79360F24055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{35B3CDC5-7645-49BB-BE53-D9C34BFDEB99} = {E2C0CDE9-CA3F-4724-8192-3717D45C1245}
 		{4546BD9C-F1AE-45EB-B926-10EDA41BCDFC} = {E2C0CDE9-CA3F-4724-8192-3717D45C1245}
 		{4A902B60-BD9E-45CD-B1CD-4CBC184F897E} = {E2C0CDE9-CA3F-4724-8192-3717D45C1245}
+		{5922CB2B-85EB-420C-80FC-E79360F24055} = {1326140C-4D83-49AE-A1CC-ADF44CCC392D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE728820-11BF-4E2C-B7F4-6FA3B78F2761}
