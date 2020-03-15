@@ -8,19 +8,20 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44B01368-DF44-4C3C-8D7D-4D35E0300ADA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		common.props = common.props
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riven.Modular", "src\Riven.Modular\Riven.Modular.csproj", "{91ACBCDD-6D6B-422D-A48B-344D6F73E36C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riven.Modular", "src\Riven.Modular\Riven.Modular.csproj", "{91ACBCDD-6D6B-422D-A48B-344D6F73E36C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E2C0CDE9-CA3F-4724-8192-3717D45C1245}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSample", "samples\ConsoleSample\ConsoleSample.csproj", "{35B3CDC5-7645-49BB-BE53-D9C34BFDEB99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSample", "samples\ConsoleSample\ConsoleSample.csproj", "{35B3CDC5-7645-49BB-BE53-D9C34BFDEB99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCommon", "Samples\SampleCommon\SampleCommon.csproj", "{4546BD9C-F1AE-45EB-B926-10EDA41BCDFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleCommon", "Samples\SampleCommon\SampleCommon.csproj", "{4546BD9C-F1AE-45EB-B926-10EDA41BCDFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSample", "Samples\WebSample\WebSample.csproj", "{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSample", "Samples\WebSample\WebSample.csproj", "{4A902B60-BD9E-45CD-B1CD-4CBC184F897E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1326140C-4D83-49AE-A1CC-ADF44CCC392D}"
 EndProject

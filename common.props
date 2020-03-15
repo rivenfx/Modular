@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.0.1</Version>
+    <NoWarn>$(NoWarn);CS1570;CS1572;CS1573;CS1587;CS1591;CS1701;CS1702;</NoWarn>
+    <PackageIconUrl>https://riven.staneee.com/images/riven_nupkg.png</PackageIconUrl>
+    <PackageProjectUrl>https://riven.staneee.com/</PackageProjectUrl>
+    <PackageLicense>https://github.com/rivenfx/Framework/blob/master/LICENSE</PackageLicense>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/rivenfx/Framework</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' ">
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.1" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
