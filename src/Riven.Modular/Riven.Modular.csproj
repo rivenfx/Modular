@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Riven</RootNamespace>
+
+    <PackageId>Riven.Modular</PackageId>
+    <Description>Riven.Modular</Description>
+    <AssemblyName>Riven.Modular</AssemblyName>
+
+    <PackageTags>riven;modular;framework;application framework;domain driven design</PackageTags>
+    
   </PropertyGroup>
 
   <ItemGroup>
