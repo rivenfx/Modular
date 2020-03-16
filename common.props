@@ -1,12 +1,13 @@
 <Project>
+
   <PropertyGroup>
-    <Version>0.0.1</Version>
+    <Authors>RivenFx</Authors>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <NoWarn>$(NoWarn);CS1570;CS1572;CS1573;CS1587;CS1591;CS1701;CS1702;</NoWarn>
     <PackageIconUrl>https://riven.staneee.com/images/riven_nupkg.png</PackageIconUrl>
     <PackageProjectUrl>https://riven.staneee.com/</PackageProjectUrl>
-    <PackageLicense>https://github.com/rivenfx/Modular/blob/master/LICENSE</PackageLicense>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/rivenfx/Modular</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,6 +25,10 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.1" PrivateAssets="All" />
   </ItemGroup>

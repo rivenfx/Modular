@@ -1,0 +1,9 @@
+<Project>
+
+  <PropertyGroup>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/rivenfx/Modular</RepositoryUrl>
+    <PackageLicense>https://github.com/rivenfx/Modular/blob/master/LICENSE</PackageLicense>
+  </PropertyGroup>
+    
+</Project>
