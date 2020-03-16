@@ -3,9 +3,9 @@
 $apiKey = $args[0]
 
 # 获取版本
-[xml]$commonPropsXml = Get-Content (Join-Path $rootFolder "common.props")
-$version = $commonPropsXml.Project.PropertyGroup.Version
-$versionStr = $version[0].Trim()
+[xml]$versionPropsXml = Get-Content (Join-Path $rootFolder "version.props")
+$version = $versionPropsXml.Project.PropertyGroup.Version
+$versionStr = $version.Trim()
 
 # 发布所有包
 foreach($project in $projects) {
@@ -14,7 +14,7 @@ foreach($project in $projects) {
 
     $packageFullPath
 
-    & dotnet nuget push $packageFullPath -s https://api.nuget.org/v3/index.json --api-key "$apiKey"
+    & dotnet nuget push $packageFullPath -s https://api.nuget.org/v3/index.json --api-key "$apiKey" --skip-duplicate
 }
 
 # 返回脚本执行目录
