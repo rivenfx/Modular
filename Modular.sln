@@ -32,6 +32,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nupkg", "nupkg", "{F19E1F17-4E00-4431-8983-C8D9A76AF8DB}"
 	ProjectSection(SolutionItems) = preProject
 		nupkg\common.ps1 = nupkg\common.ps1
+		nupkg\dev_push_packages.ps1 = nupkg\dev_push_packages.ps1
 		nupkg\pack.ps1 = nupkg\pack.ps1
 		nupkg\push_packages.ps1 = nupkg\push_packages.ps1
 	EndProjectSection
