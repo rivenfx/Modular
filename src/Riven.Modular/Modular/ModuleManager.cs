@@ -27,7 +27,7 @@ namespace Riven.Modular
 
 
         /// <inheritdoc/>
-        public void StartModule<TModule>(IServiceCollection services)
+        public virtual void StartModule<TModule>(IServiceCollection services)
            where TModule : IAppModule
         {
             var moduleDescriptors = new List<ModuleDescriptor>();
@@ -49,7 +49,7 @@ namespace Riven.Modular
         }
 
         /// <inheritdoc/>
-        public IServiceCollection ConfigurationService(IServiceCollection services, IConfiguration configuration)
+        public virtual IServiceCollection ConfigurationService(IServiceCollection services, IConfiguration configuration)
         {
             var context = new ServiceConfigurationContext(services, configuration);
 
@@ -76,7 +76,7 @@ namespace Riven.Modular
         }
 
         /// <inheritdoc/>
-        public IServiceProvider ApplicationInitialization(IServiceProvider serviceProvider)
+        public virtual IServiceProvider ApplicationInitialization(IServiceProvider serviceProvider)
         {
             var configuration = serviceProvider.GetService<IConfiguration>();
             var context = new ApplicationInitializationContext(serviceProvider, configuration);
@@ -104,7 +104,7 @@ namespace Riven.Modular
 
 
         /// <inheritdoc/>
-        public void ApplicationShutdown()
+        public virtual void ApplicationShutdown()
         {
             var context = new ApplicationShutdownContext(this.ServiceProvider);
 
@@ -112,7 +112,7 @@ namespace Riven.Modular
 
             foreach (var module in modules)
             {
-                (module as IAppModule)?.OnApplicationShutdown(context);
+                (module.Instance as IAppModule)?.OnApplicationShutdown(context);
             }
         }
 
