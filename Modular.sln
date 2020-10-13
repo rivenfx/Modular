@@ -39,6 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleCommon", "samples\Sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSample", "samples\WebSample\WebSample.csproj", "{F2E48686-643B-437D-A6FF-59341570D2B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D0B939A4-3A12-4E8D-9B76-21AE58A8568F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CC62B4AA-7ACD-4D98-BFBA-16630FA862BE}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build_and_publish_nuget.yml = .github\workflows\build_and_publish_nuget.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +83,8 @@ Global
 		{F19E1F17-4E00-4431-8983-C8D9A76AF8DB} = {44B01368-DF44-4C3C-8D7D-4D35E0300ADA}
 		{22EF025C-82A7-4292-9238-F1F184BA6FAC} = {E2C0CDE9-CA3F-4724-8192-3717D45C1245}
 		{F2E48686-643B-437D-A6FF-59341570D2B5} = {E2C0CDE9-CA3F-4724-8192-3717D45C1245}
+		{D0B939A4-3A12-4E8D-9B76-21AE58A8568F} = {44B01368-DF44-4C3C-8D7D-4D35E0300ADA}
+		{CC62B4AA-7ACD-4D98-BFBA-16630FA862BE} = {D0B939A4-3A12-4E8D-9B76-21AE58A8568F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE728820-11BF-4E2C-B7F4-6FA3B78F2761}
