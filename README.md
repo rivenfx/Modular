@@ -5,10 +5,10 @@ Language: 中文
 `Riven.Modular` 是一个模块化实现的基础库。你可以使用它来创建模块化的应用。
 
 
-
+[![Build Status](https://dev.azure.com/rivenfx/Modular/_apis/build/status/rivenfx.Modular?branchName=master)](https://dev.azure.com/rivenfx/Modular/_build/latest?definitionId=2&branchName=master)
 [![Latest version](https://img.shields.io/nuget/v/Riven.Modular.svg)](https://www.nuget.org/packages/Riven.Modular/)
 
-[![Build Status](https://dev.azure.com/rivenfx/Modular/_apis/build/status/rivenfx.Modular?branchName=master)](https://dev.azure.com/rivenfx/Modular/_build/latest?definitionId=2&branchName=master)
+
 
 ## 1.快速开始
 
