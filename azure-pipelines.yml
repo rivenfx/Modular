@@ -13,5 +13,18 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: PowerShell@2
+  name: "build_to_nuget_pakcages"
+  inputs:
+    filePath: './nupkg/pack.ps1'
+    pwsh: true
+    workingDirectory: './nupkg'
+
+- task: PowerShell@2
+  name: "publish_to_nuget"
+  inputs:
+    filePath: './nupkg/push_packages.ps1'
+    arguments: $(nuget_key)    
+    pwsh: true
+    workingDirectory: './nupkg'
+
