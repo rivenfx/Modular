@@ -8,6 +8,8 @@ Language: 中文
 
 [![Latest version](https://img.shields.io/nuget/v/Riven.Modular.svg)](https://www.nuget.org/packages/Riven.Modular/)
 
+[![Build Status](https://dev.azure.com/rivenfx/Modular/_apis/build/status/rivenfx.Modular?branchName=master)](https://dev.azure.com/rivenfx/Modular/_build/latest?definitionId=2&branchName=master)
+
 ## 1.快速开始
 
 （1）创建一个控制台项目
