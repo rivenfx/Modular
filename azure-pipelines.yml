@@ -24,7 +24,6 @@ steps:
   name: "publish_to_nuget"
   inputs:
     filePath: './nupkg/push_packages.ps1'
-    arguments: $(nuget_key)    
+    arguments: $(nuget_key)
     pwsh: true
     workingDirectory: './nupkg'
-
