@@ -1,6 +1,10 @@
 . ".\common.ps1"
 
 $apiKey = $args[0]
+if ([System.String]::IsNullOrWhiteSpace($apiKey)) 
+{
+    $apiKey = $env:NUGET_KEY
+}
 
 # 获取版本
 [xml]$versionPropsXml = Get-Content (Join-Path $rootFolder "version.props")
