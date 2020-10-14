@@ -1,14 +1,16 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
+# github ci triggers doc:
+# https://docs.microsoft.com/zh-cn/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml#ci-triggers
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - version.props
 
 pool:
   vmImage: 'ubuntu-latest'
-
 
 steps:
 - task: PowerShell@2
