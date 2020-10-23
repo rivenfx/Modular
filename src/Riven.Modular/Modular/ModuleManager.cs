@@ -18,7 +18,7 @@ namespace Riven.Modular
         /// <summary>
         /// 模块明细和实例
         /// </summary>
-        public virtual IReadOnlyList<ModuleDescriptor> ModuleDescriptors { get; protected set; }
+        public virtual IReadOnlyList<IModuleDescriptor> ModuleDescriptors { get; protected set; }
 
         /// <summary>
         /// ioc容器
@@ -30,7 +30,7 @@ namespace Riven.Modular
         public virtual void StartModule<TModule>(IServiceCollection services)
            where TModule : IAppModule
         {
-            var moduleDescriptors = new List<ModuleDescriptor>();
+            var moduleDescriptors = new List<IModuleDescriptor>();
 
 
             var moduleDescriptorList = this.ModuleSort<TModule>();
@@ -119,7 +119,7 @@ namespace Riven.Modular
         #region 模块排序
 
         /// <inheritdoc/>
-        public virtual List<ModuleDescriptor> ModuleSort<TModule>()
+        public virtual List<IModuleDescriptor> ModuleSort<TModule>()
         where TModule : IAppModule
         {
             var moduleDescriptors = VisitModule(typeof(TModule));
@@ -133,9 +133,9 @@ namespace Riven.Modular
         /// </summary>
         /// <param name="moduleType"></param>
         /// <returns></returns>
-        protected virtual List<ModuleDescriptor> VisitModule(Type moduleType)
+        protected virtual List<IModuleDescriptor> VisitModule(Type moduleType)
         {
-            var moduleDescriptors = new List<ModuleDescriptor>();
+            var moduleDescriptors = new List<IModuleDescriptor>();
 
             // 过滤抽象类、接口、泛型类、非类
             if (moduleType.IsAbstract
@@ -164,7 +164,7 @@ namespace Riven.Modular
             else
             {
                 // 依赖属性不为空,递归获取依赖
-                var dependModuleDescriptors = new List<ModuleDescriptor>();
+                var dependModuleDescriptors = new List<IModuleDescriptor>();
                 foreach (var dependModuleType in dependModulesAttribute.DependModuleTypes)
                 {
                     dependModuleDescriptors.AddRange(

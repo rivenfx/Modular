@@ -4,27 +4,15 @@ using System.Text;
 
 namespace Riven.Modular
 {
-    /// <summary>
-    /// 模块描述
-    /// </summary>
-    public class ModuleDescriptor
+    public class ModuleDescriptor : IModuleDescriptor
     {
-        private object _instance;
+        protected object _instance;
 
-        /// <summary>
-        /// 模块类型
-        /// </summary>
-        public Type ModuleType { get; private set; }
+        public virtual Type ModuleType { get; protected set; }
 
-        /// <summary>
-        /// 依赖项
-        /// </summary>
-        public ModuleDescriptor[] Dependencies { get; private set; }
+        public virtual IModuleDescriptor[] Dependencies { get; protected set; }
 
-        /// <summary>
-        /// 实例
-        /// </summary>
-        public object Instance
+        public virtual object Instance
         {
             get
             {
@@ -36,7 +24,7 @@ namespace Riven.Modular
             }
         }
 
-        public ModuleDescriptor(Type moduleType, params ModuleDescriptor[] dependencies)
+        public ModuleDescriptor(Type moduleType, params IModuleDescriptor[] dependencies)
         {
             this.ModuleType = moduleType;
             this.Dependencies = dependencies ?? new ModuleDescriptor[0];
