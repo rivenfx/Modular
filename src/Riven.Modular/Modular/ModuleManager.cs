@@ -154,7 +154,7 @@ namespace Riven.Modular
             }
 
             // 
-            var dependModulesAttribute = moduleType.GetCustomAttribute<DependsOnAttribute>();
+            var dependModulesAttribute = moduleType.GetCustomAttribute<DependsOnAttribute>(false);
 
             // 依赖属性为空
             if (dependModulesAttribute == null)
