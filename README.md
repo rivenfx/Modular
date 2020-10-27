@@ -149,7 +149,7 @@ ASPNET Core使用Demo: [link](/samples/WebSample)
 
 ## Q&A
 
-如果你遇到问题，你可以到 [Issues](https://github.com/rivenfx/modular/issues)提问。
+如果你遇到问题，你可以到 [Issues](https://github.com/rivenfx/modular/issues) 提问。
 
 ## 参考项目
 
