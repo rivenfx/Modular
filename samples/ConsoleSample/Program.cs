@@ -11,7 +11,7 @@ namespace ConsoleSample
     {
         static void Main(string[] args)
         {
-            IConfiguration Configuration = null; // 你应用的配置
+            IConfiguration Configuration = GetAppConfiguration(); // 你应用的配置
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddRivenModule<MyAppStartupModule>(Configuration);

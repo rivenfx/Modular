@@ -12,6 +12,11 @@ namespace Riven.Modular
     public interface IModuleManager : IDisposable
     {
         /// <summary>
+        /// 模块描述信息
+        /// </summary>
+        IReadOnlyList<IModuleDescriptor> ModuleDescriptors { get; }
+
+        /// <summary>
         /// 启动模块
         /// </summary>
         /// <typeparam name="TModule"></typeparam>
@@ -23,7 +28,7 @@ namespace Riven.Modular
         /// </summary>
         /// <typeparam name="TModule">启动模块类型</typeparam>
         /// <returns>排序结果</returns>
-        List<ModuleDescriptor> ModuleSort<TModule>()
+        List<IModuleDescriptor> ModuleSort<TModule>()
             where TModule : IAppModule;
 
 
