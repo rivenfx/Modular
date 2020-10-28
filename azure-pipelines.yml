@@ -4,7 +4,7 @@ trigger:
   batch: true
   tags:
     include:
-    - v.*
+    - v*
 
 pool:
   vmImage: 'ubuntu-latest'
