@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
 		repository_info.props = repository_info.props
 		version.props = version.props
 	EndProjectSection
