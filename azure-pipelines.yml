@@ -49,9 +49,10 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
-    tagPattern: 'release-v*'
+    tagPattern: 'release-v.*'
     releaseNotesFilePath: './RELEASE_NOTES.md'
     assets: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+
 
