@@ -12,6 +12,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  nuget_version: ''
+
 steps:
 - task: PowerShell@2
   name: "build_to_nuget_pakcages"
@@ -27,3 +30,37 @@ steps:
     arguments: $(nuget_key)
     pwsh: true
     workingDirectory: './nupkg'
+
+- task: PowerShell@2
+  name: "move_nuget_packages"
+  displayName: '移动nuget打包结果'
+  inputs:
+    targetType: 'inline'
+    script: |
+      Copy-Item -Force -Recurse ./dist $(Build.ArtifactStagingDirectory)
+    workingDirectory: './nupkg'
+
+- task: PowerShell@2
+  name: "get_nuget_version"
+  displayName: '获取版本号'
+  inputs:
+    targetType: 'inline'
+    script: |
+      [xml]$versionPropsXml = Get-Content (Join-Path $rootFolder "version.props")
+      $version = $versionPropsXml.Project.PropertyGroup.Version
+      $(nuget_version) = $version.Trim()
+    workingDirectory: './nupkg'
+
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'rivenfx'
+    repositoryName: 'rivenfx/Modular'
+    action: 'create'
+    target: 'v$(nuget_version)'
+    tagSource: 'gitTag'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
+    assets: |
+      $(Build.ArtifactStagingDirectory)/*.nupkg
+
+
