@@ -51,9 +51,10 @@ steps:
       $(nuget_version) = $version.Trim()
     workingDirectory: './nupkg'
 
+
 - task: GitHubRelease@1
   inputs:
-    gitHubConnection: 'rivenfx'
+    gitHubConnection: 'staneee'
     repositoryName: 'rivenfx/Modular'
     action: 'create'
     target: 'v$(nuget_version)'
