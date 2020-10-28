@@ -2,16 +2,15 @@
 # https://docs.microsoft.com/zh-cn/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml#ci-triggers
 trigger:
   batch: true
-  branches:
+  tags:
     include:
-    - master
-  paths:
-    include:
-    - version.props
+    - v.*
 
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  gitHubConnection: 'rivenfx'
 
 steps:
 - task: PowerShell@2
@@ -24,34 +23,24 @@ steps:
 
 - task: PowerShell@2
   name: "publish_to_nuget"
-  displayName: '推送到nuget'
+  displayName: '推送到 nuget'
   inputs:
     filePath: './nupkg/push_packages.ps1'
     arguments: $(nuget_key)
     pwsh: true
     workingDirectory: './nupkg'
 
-- task: PowerShell@2
-  name: "move_nuget_packages"
-  displayName: '移动nuget打包结果'
-  inputs:
-    targetType: 'inline'
-    script: |
-      Copy-Item -Force -Recurse ./dist $(Build.ArtifactStagingDirectory)
-    workingDirectory: './nupkg'
-
 - task: GitHubRelease@1
   name: "create_git_release_tag"
-  displayName: '创建release标签'
+  displayName: '创建 github release 标签'
   inputs:
-    gitHubConnection: 'rivenfx'
+    gitHubConnection: '$(gitHubConnection)'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
     tagPattern: 'v.*'
     releaseNotesFilePath: './RELEASE_NOTES.md'
-    assets: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 
