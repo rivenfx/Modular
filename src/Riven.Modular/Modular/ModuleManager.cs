@@ -133,7 +133,7 @@ namespace Riven.Modular
         protected virtual List<IModuleDescriptor> VisitModule(Type moduleType)
         {
             var moduleDescriptors = new List<IModuleDescriptor>();
-            if (!moduleType.IsAppModule())
+            if (!moduleType.IsModule())
             {
                 return moduleDescriptors;
             }

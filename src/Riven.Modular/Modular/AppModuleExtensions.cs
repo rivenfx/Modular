@@ -16,7 +16,7 @@ namespace Riven.Modular
         /// </summary>
         /// <param name="moduleType"></param>
         /// <returns></returns>
-        public static bool IsAppModule(this Type moduleType)
+        public static bool IsModule(this Type moduleType)
         {
 
             // 过滤抽象类、接口、泛型类、非类
@@ -38,5 +38,7 @@ namespace Riven.Modular
 
             return true;
         }
+
+
     }
 }

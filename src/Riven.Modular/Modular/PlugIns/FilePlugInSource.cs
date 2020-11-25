@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Loader;
 
@@ -25,7 +25,7 @@ namespace Riven.Modular.PlugIns
                 {
                     foreach (var type in assembly.GetTypes())
                     {
-                        if (type.IsAppModule() && !modules.Contains(type))
+                        if (type.IsModule() && !modules.Contains(type))
                         {
                             modules.Add(type);
                         }
