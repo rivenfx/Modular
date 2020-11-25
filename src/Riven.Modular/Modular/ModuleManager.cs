@@ -11,11 +11,6 @@ namespace Riven.Modular
     public class ModuleManager : IModuleManager
     {
         /// <summary>
-        /// 模块接口类型全名称
-        /// </summary>
-        public static string _moduleInterfaceTypeFullName = typeof(IAppModule).FullName;
-
-        /// <summary>
         /// 模块明细和实例
         /// </summary>
         public virtual IReadOnlyList<IModuleDescriptor> ModuleDescriptors { get; protected set; }
@@ -24,6 +19,8 @@ namespace Riven.Modular
         /// ioc容器
         /// </summary>
         public virtual IServiceProvider ServiceProvider { get; protected set; }
+
+
 
 
         /// <inheritdoc/>
@@ -136,24 +133,12 @@ namespace Riven.Modular
         protected virtual List<IModuleDescriptor> VisitModule(Type moduleType)
         {
             var moduleDescriptors = new List<IModuleDescriptor>();
-
-            // 过滤抽象类、接口、泛型类、非类
-            if (moduleType.IsAbstract
-                || moduleType.IsInterface
-                || moduleType.IsGenericType
-                || !moduleType.IsClass)
+            if (!moduleType.IsAppModule())
             {
                 return moduleDescriptors;
             }
 
-            // 过滤没有实现IRModule接口的类
-            var baseInterfaceType = moduleType.GetInterface(_moduleInterfaceTypeFullName, false);
-            if (baseInterfaceType == null)
-            {
-                return moduleDescriptors;
-            }
-
-            // 
+            // 依赖标记
             var dependModulesAttribute = moduleType.GetCustomAttribute<DependsOnAttribute>(false);
 
             // 依赖属性为空
