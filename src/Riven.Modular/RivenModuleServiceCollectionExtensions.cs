@@ -19,13 +19,24 @@ namespace Riven
         /// <typeparam name="TModule"></typeparam>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
+        /// <param name="moduleOptionsConfiguration"></param>
         /// <returns></returns>
-        public static IServiceCollection AddRivenModule<TModule>(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRivenModule<TModule>(this IServiceCollection services, IConfiguration configuration, Action<ModuleOptions> moduleOptionsConfiguration = null)
             where TModule : IAppModule
         {
-            var moduleManager = new ModuleManager();
+            // 模块配置
+            var moduleOptions = new ModuleOptions();
+            moduleOptionsConfiguration?.Invoke(moduleOptions);
+
+            // 创建模块管理器
+            var moduleManager = new ModuleManager(moduleOptions);
+
+            // 启动模块
             moduleManager.StartModule<TModule>(services);
+
+            // 配置服务
             moduleManager.ConfigurationService(services, configuration);
+
 
             services.TryAddSingleton<IModuleManager>(moduleManager);
             return services;

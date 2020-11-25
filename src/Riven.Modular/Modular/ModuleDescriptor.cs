@@ -6,19 +6,19 @@ namespace Riven.Modular
 {
     public class ModuleDescriptor : IModuleDescriptor
     {
-        protected object _instance;
+        protected IAppModule _instance;
 
         public virtual Type ModuleType { get; protected set; }
 
         public virtual IModuleDescriptor[] Dependencies { get; protected set; }
 
-        public virtual object Instance
+        public virtual IAppModule Instance
         {
             get
             {
                 if (this._instance == null)
                 {
-                    this._instance = Activator.CreateInstance(this.ModuleType);
+                    this._instance = (IAppModule)Activator.CreateInstance(this.ModuleType);
                 }
                 return this._instance;
             }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Riven.Modular
 {
@@ -19,6 +19,6 @@ namespace Riven.Modular
         /// <summary>
         /// 实例,只创建一次
         /// </summary>
-        object Instance { get; }
+        IAppModule Instance { get; }
     }
 }

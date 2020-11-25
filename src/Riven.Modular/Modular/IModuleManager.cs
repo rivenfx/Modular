@@ -24,15 +24,6 @@ namespace Riven.Modular
             where TModule : IAppModule;
 
         /// <summary>
-        /// 模块排序
-        /// </summary>
-        /// <typeparam name="TModule">启动模块类型</typeparam>
-        /// <returns>排序结果</returns>
-        List<IModuleDescriptor> ModuleSort<TModule>()
-            where TModule : IAppModule;
-
-
-        /// <summary>
         /// 配置服务
         /// </summary>
         /// <param name="services"></param>

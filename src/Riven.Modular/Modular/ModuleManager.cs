@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using JetBrains.Annotations;
 
 namespace Riven.Modular
 {
@@ -20,7 +21,17 @@ namespace Riven.Modular
         /// </summary>
         public virtual IServiceProvider ServiceProvider { get; protected set; }
 
+        protected readonly ModuleOptions _moduleOptions;
 
+        public ModuleManager([NotNull] ModuleOptions moduleOptions)
+        {
+            if (moduleOptions == null)
+            {
+                throw new ArgumentNullException(nameof(moduleOptions));
+            }
+
+            _moduleOptions = moduleOptions;
+        }
 
 
         /// <inheritdoc/>
@@ -30,8 +41,22 @@ namespace Riven.Modular
             var moduleDescriptors = new List<IModuleDescriptor>();
 
 
-            var moduleDescriptorList = this.ModuleSort<TModule>();
-            foreach (var item in moduleDescriptorList)
+            // 查找所有模块
+            var modules = this.VisitModule(typeof(TModule));
+
+            // 加载插件模块
+            foreach (var moduleType in this._moduleOptions.PlugInSources?.GetAllModules())
+            {
+                if (modules.Any(m => m.ModuleType == moduleType))
+                {
+                    continue;
+                }
+                modules.AddRange(this.VisitModule(moduleType));
+            }
+
+            // 排序
+            modules = this.ModuleSort<TModule>(modules);
+            foreach (var item in modules)
             {
                 if (moduleDescriptors.Any(o => o.ModuleType.FullName == item.ModuleType.FullName))
                 {
@@ -115,13 +140,19 @@ namespace Riven.Modular
 
         #region 模块排序
 
-        /// <inheritdoc/>
-        public virtual List<IModuleDescriptor> ModuleSort<TModule>()
-        where TModule : IAppModule
+        public virtual List<IModuleDescriptor> FindAllModule<TModule>()
+           where TModule : IAppModule
         {
             var moduleDescriptors = VisitModule(typeof(TModule));
 
-            return Topological.Sort(moduleDescriptors, o => o.Dependencies);
+            return moduleDescriptors;
+        }
+
+        /// <inheritdoc/>
+        public virtual List<IModuleDescriptor> ModuleSort<TModule>(List<IModuleDescriptor> input)
+        where TModule : IAppModule
+        {
+            return Topological.Sort(input, o => o.Dependencies);
         }
 
 

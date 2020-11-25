@@ -43,7 +43,7 @@ namespace Riven.Modular
         /// 检查模块类型是否实现了 IAppModule 接口
         /// </summary>
         /// <param name="moduleType"></param>
-        static void CheckModuleType(this Type moduleType)
+        public static void CheckModuleType(this Type moduleType)
         {
             if (!IsModule(moduleType))
             {
