@@ -39,6 +39,16 @@ namespace Riven.Modular
             return true;
         }
 
-
+        /// <summary>
+        /// 检查模块类型是否实现了 IAppModule 接口
+        /// </summary>
+        /// <param name="moduleType"></param>
+        static void CheckModuleType(this Type moduleType)
+        {
+            if (!IsModule(moduleType))
+            {
+                throw new ArgumentException("Given type is not an IAppModule module: " + moduleType.AssemblyQualifiedName);
+            }
+        }
     }
 }
