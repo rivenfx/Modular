@@ -23,13 +23,20 @@ namespace ConsoleSample
             {
                 // 加载插件
                 var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+
+                // 目录插件源
                 options.PlugInSources.Add(
-                    // 扫描目录
                     new FolderPlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0"))
                     );
+
+                // 文件插件源
                 options.PlugInSources.Add(
-                   // 指定文件
                    new FilePlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0", "PluginA.dll"))
+                   );
+
+                // 类型插件源
+                options.PlugInSources.Add(
+                   new TypePlugInSource(typeof(TestModuleC))
                    );
             });
 
