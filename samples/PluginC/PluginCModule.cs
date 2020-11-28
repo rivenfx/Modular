@@ -1,11 +1,12 @@
 using Riven.Modular;
+using SampleCommon;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PluginC
 {
-    public class PluginCModule : AppModule
+    public class PluginCModule : TestBaseModule
     {
     }
 }

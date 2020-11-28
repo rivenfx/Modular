@@ -9,7 +9,7 @@ namespace PluginA
     [DependsOn(
         typeof(TestModuleA)
         )]
-    public class PluginAModule : AppModule
+    public class PluginAModule : TestBaseModule
     {
     }
 }

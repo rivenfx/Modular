@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SampleCommon
 {
-    public class TestBaseModule : AppModule
+    public abstract class TestBaseModule : AppModule
     {
         protected Type MyType => this.GetType();
 
