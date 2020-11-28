@@ -101,7 +101,26 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddRivenModule<MyAppStartupModule>(Configuration);
+        services.AddRivenModule<MyAppStartupModule>(Configuration, (options) =>
+        {
+            // 加载模块插件
+            
+            //var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+            //// 目录插件源
+            //options.PlugInSources.Add(
+            //    new FolderPlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0"))
+            //    );
+            //
+            //// 文件插件源
+            //options.PlugInSources.Add(
+            //   new FilePlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0", "PluginA.dll"))
+            //   );
+            //
+            //// 类型插件源
+            //options.PlugInSources.Add(
+            //   new TypePlugInSource(typeof(TestModuleC))
+            //   );
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -127,7 +146,27 @@ public class Program
         IConfiguration Configuration = null; // 你应用的配置
         IServiceCollection services = new ServiceCollection();
         services.AddSingleton<IConfiguration>(Configuration);
-        services.AddRivenModule<MyAppStartupModule>(Configuration);
+
+        services.AddRivenModule<MyAppStartupModule>(Configuration, (options) =>
+        {
+            // 加载模块插件
+            
+            //var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+            //// 目录插件源
+            //options.PlugInSources.Add(
+            //    new FolderPlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0"))
+            //    );
+            //
+            //// 文件插件源
+            //options.PlugInSources.Add(
+            //   new FilePlugInSource(Path.Join(rootPath, "plugins", "netstandard2.0", "PluginA.dll"))
+            //   );
+            //
+            //// 类型插件源
+            //options.PlugInSources.Add(
+            //   new TypePlugInSource(typeof(TestModuleC))
+            //   );
+        });
 
         IServiceProvider serviceProvider = services.BuildServiceProvider();
         serviceProvider.UseRivenModule();
