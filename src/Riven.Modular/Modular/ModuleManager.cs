@@ -197,18 +197,5 @@ namespace Riven.Modular
 
 
         #endregion
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-        }
-
-        protected virtual void Dispose(bool state)
-        {
-            this.ApplicationShutdown();
-
-        }
-
-
     }
 }

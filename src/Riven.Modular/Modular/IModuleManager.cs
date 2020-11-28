@@ -9,7 +9,7 @@ namespace Riven.Modular
     /// <summary>
     /// 应用模块管理器
     /// </summary>
-    public interface IModuleManager : IDisposable
+    public interface IModuleManager
     {
         /// <summary>
         /// 模块描述信息

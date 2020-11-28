@@ -17,7 +17,13 @@ namespace Riven
         /// <returns></returns>
         public static IServiceProvider UseRivenModule(this IServiceProvider serviceProvider)
         {
-            var moduleManager = serviceProvider.GetService<IModuleManager>();
+            var moduleManager = serviceProvider.GetRequiredService<IModuleManager>();
+
+            AppDomain.CurrentDomain.ProcessExit += (sender, e) =>
+            {
+                moduleManager.ApplicationShutdown();
+            };
+
 
             return moduleManager.ApplicationInitialization(serviceProvider);
         }
