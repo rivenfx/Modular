@@ -18,6 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\samples\SampleCommon\SampleCommon.csproj" />
 		<ProjectReference Include="..\..\src\Riven.Modular\Riven.Modular.csproj" />
 	</ItemGroup>
 
