@@ -1,3 +1,6 @@
+## Release V0.0.7
+* 文件夹插件源加载 native dll bug修复
+
 ## Release V0.0.6
 * 增加模块插件支持
 	* FolderPlugInSource 文件夹插件源
