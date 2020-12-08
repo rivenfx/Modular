@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +34,8 @@ namespace Riven.Modular.PlugIns
         {
             var modules = new List<Type>();
 
-            foreach (var assembly in GetAssemblies())
+            var assemblies = GetAssemblies();
+            foreach (var assembly in assemblies)
             {
                 try
                 {
@@ -54,16 +56,30 @@ namespace Riven.Modular.PlugIns
             return modules.ToArray();
         }
 
-        protected virtual IEnumerable<Assembly> GetAssemblies()
+        protected virtual List<Assembly> GetAssemblies()
         {
-            var assemblyFiles = this.GetAssemblyFiles(Folder, SearchOption);
+            var assemblies = new List<Assembly>();
+
+            var assemblyFilePaths = this.GetAssemblyFiles(Folder, SearchOption).ToList();
 
             if (Filter != null)
             {
-                assemblyFiles = assemblyFiles.Where(Filter);
+                assemblyFilePaths = (List<string>)assemblyFilePaths.Where(Filter);
             }
 
-            return assemblyFiles.Select(AssemblyLoadContext.Default.LoadFromAssemblyPath);
+            foreach (var assemblyFile in assemblyFilePaths)
+            {
+
+                try
+                {
+                    assemblies.Add(AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyFile));
+                }
+                catch
+                {
+                }
+            }
+
+            return assemblies;
         }
 
         protected virtual IEnumerable<string> GetAssemblyFiles(string folderPath, SearchOption searchOption)
