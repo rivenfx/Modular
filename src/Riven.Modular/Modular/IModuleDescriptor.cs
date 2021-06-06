@@ -20,5 +20,11 @@ namespace Riven.Modular
         /// 实例,只创建一次
         /// </summary>
         IAppModule Instance { get; }
+
+
+        /// <summary>
+        /// 存在依赖项
+        /// </summary>
+        bool HasDependencies { get; }
     }
 }

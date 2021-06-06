@@ -1,3 +1,6 @@
+## Release V0.0.9
+* 无依赖的模块靠后加载
+
 ## Release V0.0.8
 * 循环依赖StackOverflow问题修复
 
