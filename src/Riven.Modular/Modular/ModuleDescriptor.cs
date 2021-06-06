@@ -29,5 +29,10 @@ namespace Riven.Modular
             this.ModuleType = moduleType;
             this.Dependencies = dependencies ?? new ModuleDescriptor[0];
         }
+
+        public override string ToString()
+        {
+            return ModuleType.FullName;
+        }
     }
 }

@@ -162,37 +162,54 @@ namespace Riven.Modular
         /// </summary>
         /// <param name="moduleType"></param>
         /// <returns></returns>
-        protected virtual List<IModuleDescriptor> VisitModule(Type moduleType)
+        protected virtual List<IModuleDescriptor> VisitModule(Type moduleType, Type parentModuleType = null, Dictionary<Type, bool> parentDependModuleType = null)
         {
             var moduleDescriptors = new List<IModuleDescriptor>();
             if (!moduleType.IsModule())
             {
-                return moduleDescriptors;
+                goto end;
+            }
+            if (parentDependModuleType == null)
+            {
+                parentDependModuleType = new Dictionary<Type, bool>();
             }
 
-            // 依赖标记
+            // 获取依赖模块信息
             var dependModulesAttribute = moduleType.GetCustomAttribute<DependsOnAttribute>(false);
 
-            // 依赖属性为空
+            // 创建模块信息
+            // 依赖模块为空
             if (dependModulesAttribute == null)
             {
-                moduleDescriptors.Add(new ModuleDescriptor(moduleType));
-            }
-            else
-            {
-                // 依赖属性不为空,递归获取依赖
-                var dependModuleDescriptors = new List<IModuleDescriptor>();
-                foreach (var dependModuleType in dependModulesAttribute.DependModuleTypes)
-                {
-                    dependModuleDescriptors.AddRange(
-                        this.VisitModule(dependModuleType)
+                moduleDescriptors.Add(
+                    new ModuleDescriptor(moduleType)
                     );
+                goto end;
+            }
+
+            // 依赖属性不为空,递归获取依赖
+            var dependModuleDescriptors = new List<IModuleDescriptor>();
+            foreach (var dependModuleType in dependModulesAttribute.DependModuleTypes)
+            {
+                if (parentDependModuleType.TryGetValue(dependModuleType, out var isEx) || dependModuleType == parentModuleType)
+                {
+                    throw new InvalidOperationException($"There are cyclic dependencies！\r\n{moduleType.FullName} <--> {dependModuleType.FullName}");
                 }
 
-                // 创建模块描述信息,内容为模块类型和依赖类型
-                moduleDescriptors.Add(new ModuleDescriptor(moduleType, dependModuleDescriptors.ToArray()));
+                parentDependModuleType.Add(dependModuleType, true);
+                dependModuleDescriptors.AddRange(
+                    this.VisitModule(dependModuleType, moduleType, parentDependModuleType)
+                );
             }
 
+            parentDependModuleType.Clear();
+            // 创建模块信息,内容为模块类型和依赖信息
+            moduleDescriptors.Add(
+                new ModuleDescriptor(moduleType, dependModuleDescriptors.ToArray())
+                );
+
+
+        end: // 返回结果
             return moduleDescriptors;
         }
 
