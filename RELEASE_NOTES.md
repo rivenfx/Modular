@@ -1,3 +1,6 @@
+## Release V0.0.8
+* 循环依赖StackOverflow问题修复
+
 ## Release V0.0.7
 * 文件夹插件源加载 native dll bug修复
 
