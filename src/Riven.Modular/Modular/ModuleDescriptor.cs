@@ -24,6 +24,8 @@ namespace Riven.Modular
             }
         }
 
+        public bool HasDependencies => this.Dependencies.Length > 0;
+
         public ModuleDescriptor(Type moduleType, params IModuleDescriptor[] dependencies)
         {
             this.ModuleType = moduleType;

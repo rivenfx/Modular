@@ -205,7 +205,7 @@ namespace Riven.Modular
             parentDependModuleType.Clear();
             // 创建模块信息,内容为模块类型和依赖信息
             moduleDescriptors.Add(
-                new ModuleDescriptor(moduleType, dependModuleDescriptors.ToArray())
+                new ModuleDescriptor(moduleType, dependModuleDescriptors.OrderByDescending(o => o.HasDependencies).ToArray())
                 );
 
 
