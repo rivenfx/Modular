@@ -51,7 +51,7 @@ namespace Riven.Modular
                 // 如果处理的为当前节点，则说明存在循环引用
                 if (inProcess)
                 {
-                    throw new ArgumentException("topological module Cyclic dependency found.");
+                    throw new ArgumentException("topological module cyclic dependency found.");
                 }
             }
             else
