@@ -42,17 +42,7 @@ namespace Riven.Modular
 
 
             // 查找所有模块
-            var modules = this.VisitModule(typeof(TModule));
-
-            // 加载插件模块
-            foreach (var moduleType in this._moduleOptions.PlugInSources?.GetAllModules())
-            {
-                if (modules.Any(m => m.ModuleType == moduleType))
-                {
-                    continue;
-                }
-                modules.AddRange(this.VisitModule(moduleType));
-            }
+            var modules = this.FindAllModule<TModule>();
 
             // 排序
             modules = this.ModuleSort<TModule>(modules);
@@ -143,9 +133,20 @@ namespace Riven.Modular
         public virtual List<IModuleDescriptor> FindAllModule<TModule>()
            where TModule : IAppModule
         {
-            var moduleDescriptors = VisitModule(typeof(TModule));
+            // 查找所有模块
+            var modules = this.VisitModule(typeof(TModule));
 
-            return moduleDescriptors;
+            // 加载插件模块
+            foreach (var moduleType in this._moduleOptions.PlugInSources?.GetAllModules())
+            {
+                if (modules.Any(m => m.ModuleType == moduleType))
+                {
+                    continue;
+                }
+                modules.AddRange(this.VisitModule(moduleType));
+            }
+
+            return modules;
         }
 
         /// <inheritdoc/>
@@ -184,7 +185,7 @@ namespace Riven.Modular
                 foreach (var dependModuleType in dependModulesAttribute.DependModuleTypes)
                 {
                     dependModuleDescriptors.AddRange(
-                        VisitModule(dependModuleType)
+                        this.VisitModule(dependModuleType)
                     );
                 }
 
