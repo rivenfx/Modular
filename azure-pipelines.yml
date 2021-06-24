@@ -34,7 +34,7 @@ steps:
   name: "create_git_release_tag"
   displayName: '创建 github release 标签'
   inputs:
-    gitHubConnection: '$(gitHubConnection)'
+    gitHubConnection: 'staneee'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     target: '$(Build.SourceVersion)'
